@@ -20,7 +20,7 @@ export default function Dashboard() {
 
   const fetchTickets = async () => {
     const token = localStorage.getItem("token");
-    if (!token) return router.push("/");
+    if (!token) return router.push("/login");
 
     try {
       const res = await customFetch.get("/tickets/assigned", {
@@ -34,7 +34,7 @@ export default function Dashboard() {
         err?.response?.data?.error || "Session expired. Please login again."
       );
       localStorage.removeItem("token");
-      router.push("/");
+      router.push("/login");
     }
   };
 
